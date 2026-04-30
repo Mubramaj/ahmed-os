@@ -2,11 +2,8 @@ module Admin
   # Editor surface for managing posts (drafts and published).
   #
   # Lives under /admin/posts and is intentionally separate from the public
-  # /writing pages. Authentication will be added later; for now the route is
-  # simply unlisted in the public navigation.
-  class PostsController < ApplicationController
-    layout "admin"
-
+  # /writing pages. Inherits authentication enforcement from Admin::BaseController.
+  class PostsController < BaseController
     before_action :set_post, only: %i[show edit update destroy]
 
     # GET /admin/posts

@@ -1,5 +1,15 @@
 # Idempotent sample posts for development and for `db:seed:replant` in CI.
 # Production stays empty so content is created via /admin/posts.
+
+# Admin user — dev only. Production credentials must be created via:
+#   bin/rails runner "User.create!(email_address: 'you@example.com', password: 'change_me')"
+# Never commit real credentials here.
+if Rails.env.development?
+  User.find_or_create_by!(email_address: "admin@example.com") do |user|
+    user.password = "password"
+  end
+end
+
 unless Rails.env.production?
   Post.find_or_initialize_by(slug: "operating-notes").tap do |post|
     post.assign_attributes(

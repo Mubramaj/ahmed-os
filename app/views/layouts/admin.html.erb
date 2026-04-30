@@ -19,7 +19,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="admin">
+  <body class="admin <%= content_for(:body_class) %>">
     <header class="admin-header">
       <div class="admin-header__inner">
         <%= link_to "ahmed/os :: editor", admin_posts_path, class: "admin-brand" %>
@@ -31,11 +31,13 @@
     </header>
 
     <main class="admin-main">
-      <% if notice.present? %>
-        <p class="flash flash--notice"><%= notice %></p>
-      <% end %>
-      <% if alert.present? %>
-        <p class="flash flash--alert"><%= alert %></p>
+      <% unless content_for?(:body_class) %>
+        <% if notice.present? %>
+          <p class="flash flash--notice"><%= notice %></p>
+        <% end %>
+        <% if alert.present? %>
+          <p class="flash flash--alert"><%= alert %></p>
+        <% end %>
       <% end %>
 
       <%= yield %>

@@ -1,36 +1,34 @@
-<%# Skippable entry challenge. First visit: shown until solved or skipped (localStorage).
-    Any time: reopen with Ctrl+` or Cmd+` (see intro_controller.js). %>
+<%# Skippable entry terminal. First visit: boot sequence + shell challenge until solved or skipped.
+    Reopen any time with Ctrl+` or Cmd+` (see intro_controller.js).
+    Storage key v2 resets the gate for visitors who saw the old v1 challenge. %>
 <div class="intro"
      data-controller="intro"
-     data-intro-storage-key-value="ahmed-os.intro.v1"
+     data-intro-storage-key-value="ahmed-os.intro.v2"
      hidden>
-  <div class="intro__terminal" role="dialog" aria-label="Entry challenge">
+  <div class="intro__terminal" role="dialog" aria-label="Entry terminal">
     <div class="intro__bar">
       <div class="intro__dots" aria-hidden="true">
         <span></span><span></span><span></span>
       </div>
-      <span class="intro__title">ahmed/os :: entry</span>
+      <span class="intro__title">ahmed@ahmed-os: ~</span>
       <button type="button"
               class="intro__skip"
               data-action="intro#skip"
               aria-label="Skip the entry challenge">skip</button>
     </div>
 
-    <div class="intro__screen" data-intro-target="screen">
-      <p class="intro__line"><span class="intro__prompt">$</span> boot personal-os</p>
-      <p class="intro__line intro__line--muted">A small entry challenge. Type <code>help</code> for commands, or click skip.</p>
-      <p class="intro__line intro__line--muted">Tip: reopen anytime with <kbd class="intro__kbd">Ctrl</kbd>+<kbd class="intro__kbd">`</kbd> or <kbd class="intro__kbd">⌘</kbd>+<kbd class="intro__kbd">`</kbd>. <kbd class="intro__kbd">Esc</kbd> closes.</p>
-    </div>
+    <%# Screen starts empty — the boot sequence fills it via intro_controller.js %>
+    <div class="intro__screen" data-intro-target="screen"></div>
 
     <form class="intro__form" data-action="submit->intro#submit">
-      <span class="intro__prompt" aria-hidden="true">$</span>
+      <span class="intro__prompt" aria-hidden="true">ahmed@ahmed-os:~$</span>
       <input type="text"
              class="intro__input"
              data-intro-target="input"
              autocomplete="off"
              autocapitalize="off"
              spellcheck="false"
-             aria-label="Type a command">
+             aria-label="Type a shell command">
     </form>
   </div>
 </div>

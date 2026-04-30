@@ -1,0 +1,40 @@
+<% content_for :body_class, "admin--auth" %>
+<% content_for :title, "Sign in" %>
+
+<div class="auth-card">
+  <div class="auth-card__brand">
+    <span class="auth-card__wordmark">~/ahmed-os</span>
+    <p class="auth-card__tagline">editor</p>
+  </div>
+
+  <% if flash[:alert].present? %>
+    <p class="flash flash--alert"><%= flash[:alert] %></p>
+  <% end %>
+
+  <%= form_with url: admin_session_path, class: "auth-form" do |form| %>
+    <div class="auth-form__field">
+      <%= form.label :email_address, "email" %>
+      <%= form.email_field :email_address,
+            required:     true,
+            autofocus:    true,
+            autocomplete: "username",
+            placeholder:  "you@example.com",
+            value:        params[:email_address] %>
+    </div>
+
+    <div class="auth-form__field">
+      <%= form.label :password, "password" %>
+      <%= form.password_field :password,
+            required:     true,
+            autocomplete: "current-password",
+            placeholder:  "••••••••",
+            maxlength:    72 %>
+    </div>
+
+    <%= form.submit "sign in", class: "button button--primary auth-form__submit" %>
+  <% end %>
+
+  <div class="auth-card__footer">
+    <%= link_to "forgot password?", new_admin_password_path, class: "auth-card__link" %>
+  </div>
+</div>

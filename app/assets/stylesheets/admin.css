@@ -201,6 +201,112 @@ body.admin {
 .admin-form__errors ul { margin: 0; padding-left: 18px; }
 .admin-form__actions { display: flex; gap: 10px; }
 
+/* ── Auth / Login ────────────────────────────────────────────────── */
+
+body.admin--auth .admin-header { display: none; }
+
+body.admin--auth .admin-main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  padding-top: 0;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 40px 36px 32px;
+}
+
+.auth-card__brand {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.auth-card__wordmark {
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.auth-card__tagline {
+  margin: 6px 0 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auth-form__field label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.auth-form__field input {
+  width: 100%;
+  background: var(--bg-soft);
+  color: var(--text);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.auth-form__field input::placeholder { color: var(--text-dim); }
+
+.auth-form__field input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.auth-form__submit {
+  width: 100%;
+  margin-top: 4px;
+  padding: 11px 18px;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.auth-card__footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.auth-card__link {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  border: none;
+}
+
+.auth-card__link:hover { color: var(--accent); border: none; }
+
 /* ── Trix editor dark-mode overrides ────────────────────────────── */
 .admin-form__field trix-toolbar .trix-button-group {
   border-color: var(--border-soft);

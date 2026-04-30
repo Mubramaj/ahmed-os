@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   get "writing",       to: "writing#index", as: :writing_index
   get "writing/:slug", to: "writing#show",  as: :writing
 
-  # Editor / admin (kept simple, scaffold-style; auth to be added later).
+  # Admin: login lives at /admin/session, protected CRUD at /admin/posts
   namespace :admin do
+    resource  :session,   only: %i[new create destroy]
+    resources :passwords, param: :token, only: %i[new create edit update]
     resources :posts
     root to: "posts#index"
   end
