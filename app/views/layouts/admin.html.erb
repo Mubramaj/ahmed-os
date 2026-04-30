@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= content_for(:title) || "Editor" %> · Ahmed OS</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#0b0c0f">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="icon" href="/icon.png" type="image/png" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "admin",       "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="admin">
+    <header class="admin-header">
+      <div class="admin-header__inner">
+        <%= link_to "ahmed/os :: editor", admin_posts_path, class: "admin-brand" %>
+        <nav class="admin-nav" aria-label="Editor">
+          <%= link_to "Posts", admin_posts_path %>
+          <%= link_to "View site", root_path, target: "_blank", rel: "noopener" %>
+        </nav>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <% if notice.present? %>
+        <p class="flash flash--notice"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="flash flash--alert"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<% content_for :title, "Posts" %>
+
+<section class="admin-page-header">
+  <h1>Posts</h1>
+  <%= link_to "New post", new_admin_post_path, class: "button button--primary" %>
+</section>
+
+<% if @posts.any? %>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Category</th>
+        <th>Published</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td>
+            <%= link_to post.title.presence || "(untitled)", admin_post_path(post) %>
+            <div class="admin-table__sub"><%= post.slug %></div>
+          </td>
+          <td>
+            <span class="status-pill status-pill--<%= post.published? ? "live" : "draft" %>">
+              <%= post.published? ? "live" : "draft" %>
+            </span>
+          </td>
+          <td><%= post.category.presence || "—" %></td>
+          <td>
+            <% if post.published_at.present? %>
+              <time datetime="<%= post.published_at.iso8601 %>">
+                <%= l(post.published_at.to_date, format: :long) %>
+              </time>
+            <% else %>
+              —
+            <% end %>
+          </td>
+          <td class="admin-table__actions">
+            <%= link_to "Edit", edit_admin_post_path(post) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-state">No posts yet. Start with a draft.</p>
+<% end %>

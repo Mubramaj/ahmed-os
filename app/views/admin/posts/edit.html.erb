@@ -1,0 +1,11 @@
+<% content_for :title, "Edit post" %>
+
+<section class="admin-page-header">
+  <h1>Edit post</h1>
+</section>
+
+<%= render "form", post: @post %>
+
+<p>
+  <%= link_to "← Back to posts", admin_posts_path, class: "back-link" %>
+</p>

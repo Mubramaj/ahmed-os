@@ -1,0 +1,54 @@
+<%= form_with(model: [:admin, post], class: "admin-form") do |form| %>
+  <% if post.errors.any? %>
+    <div class="admin-form__errors">
+      <h2><%= pluralize(post.errors.count, "error") %> prevented this post from being saved:</h2>
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="admin-form__field">
+    <%= form.label :title %>
+    <%= form.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="admin-form__field">
+    <%= form.label :slug %>
+    <%= form.text_field :slug, placeholder: "auto-generated from title if blank" %>
+    <p class="admin-form__hint">Lowercase letters, numbers, and dashes. Used in /writing/:slug.</p>
+  </div>
+
+  <div class="admin-form__row">
+    <div class="admin-form__field">
+      <%= form.label :category %>
+      <%= form.text_field :category, placeholder: "essay, log, note…" %>
+    </div>
+
+    <div class="admin-form__field">
+      <%= form.label :published_at %>
+      <%= form.datetime_field :published_at %>
+    </div>
+  </div>
+
+  <div class="admin-form__field admin-form__field--inline">
+    <%= form.checkbox :published %>
+    <%= form.label :published, "Published" %>
+  </div>
+
+  <div class="admin-form__field">
+    <%= form.label :excerpt %>
+    <%= form.textarea :excerpt, rows: 3 %>
+  </div>
+
+  <div class="admin-form__field">
+    <%= form.label :body %>
+    <%= form.textarea :body, rows: 18 %>
+  </div>
+
+  <div class="admin-form__actions">
+    <%= form.submit class: "button button--primary" %>
+  </div>
+<% end %>

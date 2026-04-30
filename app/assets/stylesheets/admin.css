@@ -1,0 +1,202 @@
+/*
+ * Ahmed OS — editor / admin styles. Loaded everywhere but only takes
+ * effect inside `body.admin`.
+ */
+
+body.admin {
+  background: #0a0b0e;
+}
+
+.admin-header {
+  border-bottom: 1px solid var(--border-soft);
+  background: #0e0f13;
+}
+.admin-header__inner,
+.admin-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.admin-header__inner {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.admin-brand {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+  border: none;
+}
+.admin-brand:hover { border: none; }
+.admin-nav { display: flex; gap: 18px; font-family: var(--mono); font-size: 13px; }
+.admin-nav a { color: var(--text-muted); border: none; }
+.admin-nav a:hover { color: var(--accent); border: none; }
+
+.admin-main { padding-top: 32px; padding-bottom: 64px; }
+
+.admin-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.admin-page-header h1 { margin: 0; font-size: 22px; font-weight: 600; }
+.admin-page-header__actions { display: flex; gap: 8px; }
+.admin-eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+.admin-sub {
+  margin: 4px 0 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.admin-table th,
+.admin-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border-soft);
+  text-align: left;
+  vertical-align: top;
+}
+.admin-table th {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+.admin-table__sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+.admin-table__actions a { font-family: var(--mono); font-size: 12px; }
+
+.status-pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+.status-pill--live { color: var(--accent); background: var(--accent-soft); }
+.status-pill--draft {
+  color: var(--text-dim);
+  background: var(--bg-soft);
+  border: 1px solid var(--border-soft);
+}
+
+.admin-detail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 0 0 28px;
+  padding: 18px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.admin-detail dt {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.admin-detail dd { margin: 0; color: var(--text); font-size: 14px; }
+
+.admin-body { margin-top: 16px; }
+
+.admin-form {
+  display: grid;
+  gap: 18px;
+  max-width: 720px;
+}
+.admin-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .admin-form__row { grid-template-columns: 1fr; }
+}
+.admin-form__field { display: grid; gap: 6px; }
+.admin-form__field label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.admin-form__field input[type="text"],
+.admin-form__field input[type="datetime-local"],
+.admin-form__field textarea {
+  width: 100%;
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 120ms ease;
+}
+.admin-form__field textarea {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  line-height: 1.6;
+  resize: vertical;
+}
+.admin-form__field input:focus,
+.admin-form__field textarea:focus {
+  border-color: var(--accent);
+}
+.admin-form__field--inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.admin-form__field--inline label {
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+.admin-form__hint {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.admin-form__errors {
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  background: rgba(255, 107, 107, 0.06);
+  color: var(--danger);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 13px;
+}
+.admin-form__errors h2 { margin: 0 0 8px; font-size: 14px; }
+.admin-form__errors ul { margin: 0; padding-left: 18px; }
+.admin-form__actions { display: flex; gap: 10px; }

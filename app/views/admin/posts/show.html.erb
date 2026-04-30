@@ -1,0 +1,49 @@
+<% content_for :title, @post.title.presence || "Post" %>
+
+<section class="admin-page-header">
+  <div>
+    <span class="admin-eyebrow">post</span>
+    <h1><%= @post.title.presence || "(untitled)" %></h1>
+    <p class="admin-sub">/<%= @post.slug %></p>
+  </div>
+  <div class="admin-page-header__actions">
+    <%= link_to "Edit", edit_admin_post_path(@post), class: "button button--ghost" %>
+    <%= button_to "Delete", admin_post_path(@post),
+          method: :delete,
+          class: "button button--danger",
+          form: { data: { turbo_confirm: "Delete this post?" } } %>
+  </div>
+</section>
+
+<dl class="admin-detail">
+  <div>
+    <dt>Status</dt>
+    <dd>
+      <span class="status-pill status-pill--<%= @post.published? ? "live" : "draft" %>">
+        <%= @post.published? ? "live" : "draft" %>
+      </span>
+    </dd>
+  </div>
+  <div>
+    <dt>Category</dt>
+    <dd><%= @post.category.presence || "—" %></dd>
+  </div>
+  <div>
+    <dt>Published at</dt>
+    <dd><%= @post.published_at.present? ? l(@post.published_at, format: :long) : "—" %></dd>
+  </div>
+  <% if @post.excerpt.present? %>
+    <div>
+      <dt>Excerpt</dt>
+      <dd><%= @post.excerpt %></dd>
+    </div>
+  <% end %>
+</dl>
+
+<article class="admin-body prose">
+  <%= simple_format(@post.body) %>
+</article>
+
+<p>
+  <%= link_to "← Back to posts", admin_posts_path, class: "back-link" %>
+</p>

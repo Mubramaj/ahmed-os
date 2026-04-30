@@ -1,0 +1,63 @@
+/*
+ * Ahmed OS — portrait / avatar usage (header, home hero, about).
+ */
+
+.site-brand__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-soft);
+  flex-shrink: 0;
+}
+
+.hero__row {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+.hero__avatar {
+  margin: 4px 0 0;
+  flex-shrink: 0;
+}
+.hero__avatar-img {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-soft);
+  display: block;
+}
+.hero__copy { min-width: 0; flex: 1; }
+@media (max-width: 640px) {
+  .hero__row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero__avatar { margin-top: 0; }
+  .hero__actions { justify-content: center; }
+}
+
+.about-profile {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: start;
+  margin-bottom: 16px;
+}
+.about-profile__photo {
+  width: 132px;
+  height: 132px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid var(--border-soft);
+}
+.about-profile__body { margin: 0; }
+@media (max-width: 640px) {
+  .about-profile {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+}

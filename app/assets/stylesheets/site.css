@@ -1,0 +1,278 @@
+/*
+ * Ahmed OS — public site styles (header/footer, homepage, writing, pages).
+ */
+
+/* ---------- Site shell ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(11, 12, 15, 0.85);
+  backdrop-filter: saturate(140%) blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header__inner,
+.site-footer__inner,
+.site-main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 24px;
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  border: none;
+}
+.site-brand:hover { color: var(--accent); border: none; }
+.site-brand__mark { color: var(--accent); }
+.site-brand__name { color: var(--text); }
+
+.site-nav {
+  display: flex;
+  gap: 22px;
+  font-size: 14px;
+  font-family: var(--mono);
+}
+.site-nav a { color: var(--text-muted); border: none; }
+.site-nav a:hover,
+.site-nav a.is-active { color: var(--text); border: none; }
+.site-nav a.is-active { color: var(--accent); }
+
+.site-main {
+  padding-top: 64px;
+  padding-bottom: 96px;
+  min-height: calc(100vh - 64px - 80px);
+}
+
+.site-footer {
+  border-top: 1px solid var(--border-soft);
+  padding: 28px 0;
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+.site-footer__inner { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.site-footer__sep { color: var(--border); }
+
+/* ---------- Hero / homepage ---------- */
+
+.hero { padding: 24px 0 48px; }
+
+.hero__eyebrow {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: 13px;
+  margin: 0 0 18px;
+  letter-spacing: 0.04em;
+}
+.hero__title {
+  font-size: clamp(28px, 4.6vw, 44px);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.hero__title em { font-style: normal; color: var(--accent); }
+.hero__lede { color: var(--text-muted); max-width: 60ch; margin: 0 0 28px; }
+.hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- Panels ---------- */
+
+.panel {
+  border-top: 1px solid var(--border-soft);
+  padding: 32px 0;
+}
+.panel__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.panel__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.panel__meta,
+.panel__more {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  border: none;
+}
+.panel__more:hover { color: var(--accent); border: none; }
+
+/* ---------- Focus list ---------- */
+
+.focus-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+.focus-list__tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 10px;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Post list / cards ---------- */
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 4px;
+}
+.post-list--full { gap: 0; }
+
+.post-card { border-top: 1px solid var(--border-soft); }
+.post-card:first-child { border-top: none; }
+.post-card__link {
+  display: block;
+  padding: 18px 0;
+  border: none;
+}
+.post-card__link:hover { border: none; }
+.post-card__link:hover .post-card__title { color: var(--accent); }
+.post-card__meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+.post-card__category {
+  color: var(--accent);
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+.post-card__title {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  transition: color 120ms ease;
+}
+.post-card__excerpt {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* ---------- Project cards ---------- */
+
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+.project-card {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  background: var(--bg-elev);
+  transition: border-color 120ms ease;
+}
+.project-card:hover { border-color: var(--border); }
+.project-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  gap: 12px;
+}
+.project-card__name { margin: 0; font-size: 16px; font-weight: 600; }
+.project-card__status {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+.project-card__tagline { margin: 0; color: var(--text-muted); font-size: 14px; }
+
+/* ---------- Page header ---------- */
+
+.page-header { padding: 24px 0 32px; }
+.page-header__eyebrow {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: 13px;
+  margin: 0 0 14px;
+  letter-spacing: 0.04em;
+}
+.page-header__title {
+  font-size: clamp(26px, 3.6vw, 36px);
+  line-height: 1.2;
+  margin: 0 0 12px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+.page-header__lede { color: var(--text-muted); margin: 0; max-width: 60ch; }
+
+/* ---------- Single post ---------- */
+
+.post { padding: 16px 0; }
+.post__header { margin-bottom: 28px; }
+.post__meta {
+  display: flex;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.post__category { color: var(--accent); text-transform: lowercase; letter-spacing: 0.04em; }
+.post__title {
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.2;
+  margin: 0 0 12px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+.post__excerpt {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 17px;
+  max-width: 60ch;
+}
+.post__footer {
+  margin-top: 48px;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 20px;
+}

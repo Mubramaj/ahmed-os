@@ -1,0 +1,28 @@
+published_one:
+  title: First Published Post
+  body: |
+    This is the first published post.
+    It spans multiple lines to keep things realistic.
+  slug: first-published-post
+  category: essay
+  excerpt: A first published post used in tests.
+  published: true
+  published_at: <%= 2.days.ago.iso8601 %>
+
+published_two:
+  title: Second Published Post
+  body: Another short body for testing.
+  slug: second-published-post
+  category: note
+  excerpt: A second published post used in tests.
+  published: true
+  published_at: <%= 1.day.ago.iso8601 %>
+
+draft_one:
+  title: A Draft In Progress
+  body: Draft content not visible to the public yet.
+  slug: a-draft-in-progress
+  category: log
+  excerpt: A draft used to verify scope filtering.
+  published: false
+  published_at:

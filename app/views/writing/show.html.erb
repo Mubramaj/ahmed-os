@@ -1,0 +1,29 @@
+<% content_for :title, "#{@post.title} · Writing" %>
+<% content_for :description, @post.excerpt.presence || @post.title %>
+
+<article class="post">
+  <header class="post__header">
+    <div class="post__meta">
+      <% if @post.category.present? %>
+        <span class="post__category"><%= @post.category %></span>
+      <% end %>
+      <% if @post.published_at.present? %>
+        <time datetime="<%= @post.published_at.iso8601 %>">
+          <%= l(@post.published_at.to_date, format: :long) %>
+        </time>
+      <% end %>
+    </div>
+    <h1 class="post__title"><%= @post.title %></h1>
+    <% if @post.excerpt.present? %>
+      <p class="post__excerpt"><%= @post.excerpt %></p>
+    <% end %>
+  </header>
+
+  <div class="post__body prose">
+    <%= simple_format(@post.body) %>
+  </div>
+
+  <footer class="post__footer">
+    <%= link_to "← Back to writing", writing_index_path, class: "back-link" %>
+  </footer>
+</article>

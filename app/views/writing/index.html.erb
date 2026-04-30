@@ -1,0 +1,40 @@
+<% content_for :title, "Writing · Ahmed Loudghiri" %>
+<% content_for :description, "Notes on software, AI, games, and product, by Ahmed Loudghiri." %>
+
+<section class="page-header">
+  <p class="page-header__eyebrow">// writing</p>
+  <h1 class="page-header__title">Notes on the craft.</h1>
+  <p class="page-header__lede">
+    Short, durable pieces about software, AI, games, and the messy parts
+    of building.
+  </p>
+</section>
+
+<% if @posts.any? %>
+  <ul class="post-list post-list--full">
+    <% @posts.each do |post| %>
+      <li class="post-card">
+        <%= link_to writing_path(post.slug), class: "post-card__link" do %>
+          <div class="post-card__meta">
+            <% if post.category.present? %>
+              <span class="post-card__category"><%= post.category %></span>
+            <% end %>
+            <% if post.published_at.present? %>
+              <time datetime="<%= post.published_at.iso8601 %>">
+                <%= l(post.published_at.to_date, format: :long) %>
+              </time>
+            <% end %>
+          </div>
+          <h2 class="post-card__title"><%= post.title %></h2>
+          <% if post.excerpt.present? %>
+            <p class="post-card__excerpt"><%= post.excerpt %></p>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="empty-state">
+    No posts published yet. Drafts are stacking up. Check back soon.
+  </p>
+<% end %>

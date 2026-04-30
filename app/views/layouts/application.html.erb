@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= content_for(:title) || "Ahmed Loudghiri" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Ahmed OS">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="description" content="<%= content_for(:description) || "Ahmed Loudghiri builds systems at the intersection of software, AI, games, and product." %>">
+    <meta name="theme-color" content="#0b0c0f">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta property="og:image" content="<%= image_url("ahmed.png") %>">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="<%= image_url("ahmed.png") %>">
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "site",        "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "profile",     "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "intro",       "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="<%= content_for?(:body_class) ? yield(:body_class) : "site" %>">
+    <%= render "shared/intro" %>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <%= link_to root_path, class: "site-brand" do %>
+          <%= image_tag "ahmed.png", alt: "", class: "site-brand__avatar", aria: { hidden: true } %>
+          <span class="site-brand__mark">~/</span>
+          <span class="site-brand__name">ahmed loudghiri</span>
+        <% end %>
+
+        <nav class="site-nav" aria-label="Primary">
+          <%= link_to "Writing", writing_index_path, class: ("is-active" if controller_name == "writing") %>
+          <%= link_to "Projects", projects_path, class: ("is-active" if action_name == "projects") %>
+          <%= link_to "Experiments", experiments_path, class: ("is-active" if action_name == "experiments") %>
+          <%= link_to "About", about_path, class: ("is-active" if action_name == "about") %>
+        </nav>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <% if notice.present? %>
+        <p class="flash flash--notice"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="flash flash--alert"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>&copy; <%= Date.current.year %> Ahmed Loudghiri</span>
+        <span class="site-footer__sep">/</span>
+        <span class="site-footer__motto">building quietly</span>
+        <span class="site-footer__sep" aria-hidden="true">/</span>
+        <span class="site-footer__shortcut" title="Reopen the entry terminal (same as many IDEs)">
+          <kbd class="kbd">Ctrl</kbd><span class="kbd-gap">+</span><kbd class="kbd">`</kbd>
+          <span class="site-footer__shortcut-alt"><kbd class="kbd">⌘</kbd><span class="kbd-gap">+</span><kbd class="kbd">`</kbd></span>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

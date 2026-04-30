@@ -1,0 +1,94 @@
+<% content_for :title, "Ahmed Loudghiri" %>
+<% content_for :description, "Ahmed Loudghiri builds systems at the intersection of software, AI, games, and product." %>
+
+<section class="hero">
+  <div class="hero__row">
+    <figure class="hero__avatar">
+      <%= image_tag "ahmed.png", alt: "Ahmed Loudghiri", class: "hero__avatar-img", loading: "eager" %>
+    </figure>
+    <div class="hero__copy">
+      <p class="hero__eyebrow">// personal operating system</p>
+      <h1 class="hero__title">
+        Ahmed Loudghiri builds systems at the intersection of <em>software</em>, <em>AI</em>, <em>games</em>, and <em>product</em>.
+      </h1>
+      <p class="hero__lede">
+        Founder of ToutiGame. Backend, frontend, and AI builder. This is a quiet,
+        living place for writing, projects, experiments, and the decisions
+        behind them.
+      </p>
+      <div class="hero__actions">
+        <%= link_to "Read the writing", writing_index_path, class: "button button--primary" %>
+        <%= link_to "Projects", projects_path, class: "button button--ghost" %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel__head">
+    <h2 class="panel__title">Currently focused on</h2>
+    <span class="panel__meta">now()</span>
+  </div>
+  <ul class="focus-list">
+    <li><span class="focus-list__tag">build</span> ToutiGame, the games platform.</li>
+    <li><span class="focus-list__tag">study</span> the operating shape of small AI products.</li>
+    <li><span class="focus-list__tag">write</span> short, durable notes on the craft.</li>
+  </ul>
+</section>
+
+<section class="panel">
+  <div class="panel__head">
+    <h2 class="panel__title">Recent writing</h2>
+    <%= link_to "All posts", writing_index_path, class: "panel__more" %>
+  </div>
+
+  <% if @featured_posts.any? %>
+    <ul class="post-list">
+      <% @featured_posts.each do |post| %>
+        <li class="post-card">
+          <%= link_to writing_path(post.slug), class: "post-card__link" do %>
+            <div class="post-card__meta">
+              <% if post.category.present? %>
+                <span class="post-card__category"><%= post.category %></span>
+              <% end %>
+              <% if post.published_at.present? %>
+                <time datetime="<%= post.published_at.iso8601 %>">
+                  <%= l(post.published_at.to_date, format: :long) %>
+                </time>
+              <% end %>
+            </div>
+            <h3 class="post-card__title"><%= post.title %></h3>
+            <% if post.excerpt.present? %>
+              <p class="post-card__excerpt"><%= post.excerpt %></p>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="empty-state">
+      Notes are being drafted in the background. Come back soon.
+    </p>
+  <% end %>
+</section>
+
+<section class="panel">
+  <div class="panel__head">
+    <h2 class="panel__title">Projects</h2>
+    <%= link_to "All projects", projects_path, class: "panel__more" %>
+  </div>
+
+  <ul class="project-list">
+    <% @featured_projects.each do |project| %>
+      <li class="project-card">
+        <div class="project-card__head">
+          <h3 class="project-card__name"><%= project[:name] %></h3>
+          <span class="project-card__status"><%= project[:status] %></span>
+        </div>
+        <p class="project-card__tagline"><%= project[:tagline] %></p>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<%# Future: decision logs, interactive entry puzzle, AI-powered assistant. %>

@@ -2,6 +2,13 @@
 
 Personal website and writing surface for **Ahmed Loudghiri**, built as a small Rails app: public pages and a slug-based blog at `/writing`, plus a lightweight **admin** area for posts (no authentication yet).
 
+## Branding assets
+
+- **Portrait** for the public site: [`app/assets/images/ahmed.png`](app/assets/images/ahmed.png) (Propshaft / `image_tag`).
+- **Favicon & touch icon** served from the web root: [`public/icon.png`](public/icon.png), [`public/apple-touch-icon.png`](public/apple-touch-icon.png) (same source image).
+
+For correct **Open Graph / Twitter** absolute image URLs in production, set your app host (e.g. `config.action_controller.default_url_options` or `config.asset_host`) to your real domain.
+
 ## Stack
 
 - [Ruby on Rails](https://rubyonrails.org/) 8.1

@@ -1,0 +1,24 @@
+<% content_for :title, "Projects · Ahmed Loudghiri" %>
+
+<section class="page-header">
+  <p class="page-header__eyebrow">// projects</p>
+  <h1 class="page-header__title">Things I'm building, or have built.</h1>
+  <p class="page-header__lede">
+    A growing list. Some are public, some still in private mode. More
+    detail will land here over time.
+  </p>
+</section>
+
+<ul class="project-list project-list--page">
+  <% @projects.each do |project| %>
+    <li class="project-card">
+      <div class="project-card__head">
+        <h2 class="project-card__name"><%= project[:name] %></h2>
+        <span class="project-card__status"><%= project[:status] %></span>
+      </div>
+      <p class="project-card__tagline"><%= project[:tagline] %></p>
+    </li>
+  <% end %>
+</ul>
+
+<%# Future: real Project model with description, links, status, screenshots. %>

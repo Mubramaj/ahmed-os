@@ -1,0 +1,113 @@
+/*
+ * Ahmed OS — entry challenge / terminal overlay.
+ *
+ * This is purely visual. The Stimulus `intro_controller` decides when to
+ * show or hide it. Avoid styling that could leak onto the rest of the
+ * page when the overlay is hidden via the `[hidden]` attribute.
+ */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 9, 12, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 24px;
+  animation: introFadeIn 200ms ease;
+}
+.intro[hidden] { display: none !important; }
+.intro--leaving { animation: introFadeOut 240ms ease forwards; }
+
+.intro__terminal {
+  width: min(560px, 100%);
+  background: #0e0f13;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  font-family: var(--mono);
+}
+
+.intro__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-soft);
+  background: #0a0b0e;
+}
+.intro__dots { display: flex; gap: 6px; }
+.intro__dots span {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #2a2d35;
+}
+.intro__title {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+.intro__skip {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+.intro__skip:hover { color: var(--accent); border-color: var(--accent); }
+
+.intro__screen {
+  padding: 18px;
+  height: 240px;
+  overflow-y: auto;
+  font-size: 13.5px;
+  color: var(--text);
+}
+.intro__line { margin: 0 0 6px; }
+.intro__line--muted { color: var(--text-dim); }
+.intro__line--error { color: var(--danger); }
+.intro__prompt { color: var(--accent); margin-right: 8px; }
+
+.intro__kbd {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: #12141a;
+  color: var(--text-muted);
+}
+
+.intro__form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-top: 1px solid var(--border-soft);
+  background: #0a0b0e;
+}
+.intro__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 13.5px;
+  caret-color: var(--accent);
+}
+
+@keyframes introFadeIn {
+  from { opacity: 0; transform: scale(0.99); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes introFadeOut {
+  to { opacity: 0; transform: scale(0.98); }
+}
