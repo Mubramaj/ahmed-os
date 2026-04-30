@@ -5,6 +5,8 @@
 # URL identifier and must be unique. If a slug is not provided it will be
 # generated from the title before validation.
 class Post < ApplicationRecord
+  has_rich_text :body
+
   # Validations
   validates :title, presence: true
   validates :body, presence: true

@@ -200,3 +200,45 @@ body.admin {
 .admin-form__errors h2 { margin: 0 0 8px; font-size: 14px; }
 .admin-form__errors ul { margin: 0; padding-left: 18px; }
 .admin-form__actions { display: flex; gap: 10px; }
+
+/* ── Trix editor dark-mode overrides ────────────────────────────── */
+.admin-form__field trix-toolbar .trix-button-group {
+  border-color: var(--border-soft);
+}
+.admin-form__field trix-toolbar .trix-button {
+  background: transparent;
+  color: var(--text-muted);
+  border-color: transparent;
+}
+.admin-form__field trix-toolbar .trix-button:not(:disabled):hover {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+.admin-form__field trix-toolbar .trix-button.trix-active {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+.admin-form__field trix-toolbar .trix-button:disabled {
+  color: var(--text-dim);
+}
+
+/* Invert the dark SVG icons so they show on the dark background */
+.admin-form__field trix-toolbar .trix-button--icon::before {
+  filter: invert(1);
+}
+
+.admin-form__field trix-editor {
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.7;
+  min-height: 320px;
+}
+.admin-form__field trix-editor:focus {
+  outline: none;
+  border-color: var(--accent);
+}

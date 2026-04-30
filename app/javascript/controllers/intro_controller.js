@@ -20,6 +20,9 @@ export default class extends Controller {
 
   static ENTER_COMMANDS = ["enter", "open", "start", "boot", "go"]
 
+  // Bound listener reference for add/removeEventListener (must be a declared private field).
+  #onGlobalKeydown = null
+
   connect() {
     this.#onGlobalKeydown = this.#handleGlobalKeydown.bind(this)
     window.addEventListener("keydown", this.#onGlobalKeydown, true)
@@ -34,7 +37,10 @@ export default class extends Controller {
   }
 
   disconnect() {
-    window.removeEventListener("keydown", this.#onGlobalKeydown, true)
+    if (this.#onGlobalKeydown) {
+      window.removeEventListener("keydown", this.#onGlobalKeydown, true)
+      this.#onGlobalKeydown = null
+    }
   }
 
   submit(event) {
