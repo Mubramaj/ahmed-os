@@ -43,7 +43,7 @@ jobs:
       #   - ghcr.io/mubramaj/ahmed-os:1.2.3          (on semver tag)
       - name: Extract Docker metadata
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
